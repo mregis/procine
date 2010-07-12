@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+    <file source-language="EN" target-language="pt" datatype="plaintext" original="messages" date="2010-06-03T19:25:29Z" product-name="messages">
+        <header/>
+        <body>
+            <trans-unit id="1">
+                <source>Username</source>
+                <target>Usuário</target>
+            </trans-unit>
+			<trans-unit id="2">
+                <source>Password</source>
+                <target>Senha</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Sign in</source>
+                <target>Entrar</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>You don't have the correct permissions to access this page.</source>
+                <target>Você não tem as permissões necessárias para acessar esta página.</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Remember</source>
+                <target>Lembrar</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Forgot password?</source>
+                <target>Esqueceu a senha?</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>The username and/or password is invalid.</source>
+                <target>O nome de usuário e/ou a senha são inválidos</target>
+            </trans-unit>
+
+            <!-- Actions -->
+            <trans-unit id="7">
+                <source>New</source>
+                <target>Novo</target>
+            </trans-unit>            
+            <trans-unit id="8">
+                <source>Edit</source>
+                <target>Editar</target>
+            </trans-unit>            
+            <trans-unit id="9">
+                <source>Delete</source>
+                <target>Excluir</target>
+            </trans-unit>            
+            <trans-unit  id="10">
+                <source>List</source>
+                <target>Listar</target>
+            </trans-unit>            
+            <trans-unit id="11">
+                <source>Save</source>
+                <target>Salvar</target>
+            </trans-unit>            
+            <trans-unit id="12">
+                <source>Save and add</source>
+                <target>Salvar e Adicionar outro</target>
+            </trans-unit>            
+            <trans-unit id="13">
+                <source>Cancel</source>
+                <target>Cancelar</target>
+            </trans-unit>
+            <!-- Filters -->            
+            <trans-unit id="14">
+                <source>Reset</source>
+                <target>Limpar</target>
+            </trans-unit>            
+            <trans-unit id="15">
+                <source>Filter</source>
+                <target>Filtrar</target>
+            </trans-unit>
+            <!-- List -->
+            <trans-unit id="16">
+                <source>No result</source>
+                <target>Nenhum resultado.</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Actions</source>
+                <target>Ações</target>
+            </trans-unit>            
+            <trans-unit id="18">
+                <source>(page %%page%%/%%nb_pages%%)</source>
+                <target>(página %%page%%/%%nb_pages%%)</target>
+            </trans-unit>
+            <!-- Pagination -->
+            <trans-unit id="19">
+                <source>First page</source>
+                <target>Primeira página</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Previous page</source>
+                <target>Página anterior</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Next page</source>
+                <target>Próxima página</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Last page</source>
+                <target>Última página</target>
+            </trans-unit>
+            <!-- Form -->
+            <trans-unit id="22">
+                <source>The item was created successfully.</source>
+                <target>Item adicionado com sucesso.</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>The item was updated successfully.</source>
+                <target>Item atualizado com sucesso.</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>The item was created successfully. You can add another one below.</source>
+				<target>Item adicionado com sucesso. Você pode adicionar outro abaixo.</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>The item was updated successfully. You can add another one below.</source>
+                <target>Item atualizado com sucesso. Você pode adicionar outro abaixo.</target>
+            </trans-unit>            
+            <trans-unit id="26">
+                <source>The item has not been saved due to some errors.</source>
+                <target>Item não atualizado devido a erros.</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>The item was deleted successfully.</source>
+                <target>Item removido com sucesso.</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>The item was deleted successfully.</source>
+                <target>Ítem excluído com sucesso.</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>You must at least select one item.</source>
+                <target>Você deve selecionar pelo menos um ítem.</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>You must select an action to execute on the selected items.</source>
+                <target>Você deve selecionar uma ação a ser executada nos ítens selecionados.</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>A problem occurs when deleting the selected items as some items do not exist anymore.</source>
+                <target>Ocorreu um problema ao excluir os ítens selecionados pois alguns deles não existem mais.</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>The selected items have been deleted successfully.</source>
+                <target>Os ítens selecionados foram excluídos com sucesso.</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>A problem occurs when deleting the selected items.</source>
+                <target>Ocorreu um problema ao deletar os ítens selecionados.</target>
+            </trans-unit>
+            <!-- Form validation -->
+            <trans-unit id="34">
+                <source>An object with the same "%column%" already exist.</source>
+                <target>Já exite um um registro com o mesmo valor para "%column%".</target>
+            </trans-unit>            
+            <trans-unit id="35">
+                <source>Invalid.</source>
+                <target>Valor inválido.</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Required.</source>
+                <target>Campo obrigatório.</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>"%value%" is not a number.</source>
+                <target>"%value%" não é um número.</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>"%value%" is not a integer</source>
+                <target>"%value%" não é um inteiro.</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>CSRF attack detected.</source>
+                <target>Tentativa de ataque CSRF tectada.</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>"%value%" does not match the date format (%date_format%).</source>
+                <target>"%value%" não é compatível com o formato de data (%date_format%).</target>
+            </trans-unit>            
+            <trans-unit id="41">
+                <source>The date must be before %max%.</source>
+                <target>A data pode ser no máximo %max%.</target>
+            </trans-unit>            
+            <trans-unit id="42">
+                <source>The date must be after %min%.</source>
+                <target>A data deve ser maior que %min%</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>File is too large (maximum is %max_size% bytes).</source>                
+                <target>Arquivo muito grande (o máximo deve ser %max_size% bytes).</target>
+            </trans-unit>            
+            <trans-unit id="44">
+                <source>Invalid mime type (%mime_type%).</source>
+                <target>Tipo de arquivo inválido (%mime_type%).</target>
+            </trans-unit>            
+            <trans-unit id="45">
+                <source>The uploaded file was only partially uploaded.</source>
+                <target>Apenas parte do arquivo foi carregado.</target>
+            </trans-unit>            
+            <trans-unit id="46">
+                <source>Missing a temporary folder.</source>
+                <target>Pasta temporária não encontrada.</target>
+            </trans-unit>            
+            <trans-unit id="47">
+                <source>Failed to write file to disk.</source>
+                <target>Falha ao escrever no disco.</target>
+            </trans-unit>            
+            <trans-unit id="48">
+                <source>File upload stopped by extension.</source>
+                <target>Upload do arquivo cancelo pela extensão.</target>
+            </trans-unit>            
+            <trans-unit id="49">
+                <source>"%value%" must be less than %max%.</source>
+                <target>"%value%" deve ser inferior a %max%.</target>
+            </trans-unit>            
+            <trans-unit id="50">
+                <source>"%value%" must be greater than %min%.</source>
+                <target>"%value%" deve ser maior que %min%.</target>
+            </trans-unit>            
+            <trans-unit id="51">
+                <source>Unexpected extra form field named "%field%".</source>                
+                <target>Encontrado campo de formulário não definido chamado "%field%".</target>
+            </trans-unit>            
+            <trans-unit id="52">                
+                <source>The form submission cannot be processed. It probably means that you have uploaded a file that is too big.</source>                
+                <target>O formulário submetido não pode ser processaro. É provável que você tenha carregado um arquivo muito grande.</target>
+            </trans-unit>            
+            <trans-unit id="53">                
+                <source>"%value%" is too long (%max_length% characters max).</source>                
+                <target>"%value%" é muito comprido (o máximo de caracteres deve ser %max_length%).</target>
+            </trans-unit>            
+            <trans-unit id="54">                
+                <source>"%value%" is too short (%min_length% characters min).</source>                
+                <target>"%value%" é muito curto (o mínimo de caracteres deve ser %max_length%).</target>
+            </trans-unit>            
+            <trans-unit id="55">                
+                <source>"%value%" does not match the time format (%time_format%).</source>                
+                <target>"%value%" não é compatível com o formato de tempo (%time_format%).</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

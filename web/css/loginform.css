@@ -1,0 +1,78 @@
+@CHARSET "ISO-8859-1";
+body{
+	background-color:#1C2438;
+	background-image:none;
+}
+form {
+	display:block;
+	font-size:10pt;
+	height:120pt;
+	left:50%;
+	margin-left:-145pt;
+	position:fixed;	
+	width:235pt;	
+}
+
+form input {
+    float: left;
+	margin-left:4pt;
+	font-size:15pt;			
+}
+
+form input[type ="button"], form input[type = "submit"] {
+    font-family: arial;
+	font-size:12pt;
+	padding:2pt;
+	font-weight:bold;
+    background-color: #e9f4d6;
+	border: 1px solid #e9f4d6;
+	background-image:url(../images/bg-btn-signup.png);
+	-moz-border-radius:4px 4px;
+	-webkit-border-radius:4px 4px; 
+	border-radius: 4px;
+	cursor:pointer;	
+	behavior:url(../css/border-radius.htc);
+}
+form input[type ="button"]:hover, 
+form input[type = "submit"]:hover{
+	background-position:0 -9px;
+}
+form label {
+    font-weight: bold;
+	float:left;
+	display:table;
+	width:50pt;
+	text-align:right;
+	font-size:10pt;
+	color:#fff;
+}
+form div.form {
+	width:100%;
+	padding:15pt;
+	padding-left:8pt;
+/*	
+	-moz-border-radius:20px 20px;
+	-webkit-border-radius:20px 20px;
+	border-radius: 20px;		
+	behavior:url(../css/border-radius.htc); 
+	border:1px solid #5F60BF;
+*/	
+}
+form div div {
+    padding-top: 5pt;
+	display:block;
+	width:auto;
+}
+
+#logo{
+	clear:both;
+	display:table;
+	height:90px;
+	margin-top:80px;
+	text-align:center;
+	width:100%;	
+}
+
+form a{
+	color:#e9f4d6;
+}

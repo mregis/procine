@@ -1,0 +1,14 @@
+CREATE TABLE grupo (id INT AUTO_INCREMENT, nome VARCHAR(255) UNIQUE, descricao TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE grupo_permissao (grupo_id INT, permissao_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(grupo_id, permissao_id)) ENGINE = INNODB;
+CREATE TABLE permissao (id INT AUTO_INCREMENT, nome VARCHAR(255) UNIQUE, descricao TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE remember_key (id INT AUTO_INCREMENT, usuario_id INT, remember_key VARCHAR(32), ip VARCHAR(50), created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX usuario_id_idx (usuario_id), PRIMARY KEY(id, ip)) ENGINE = INNODB;
+CREATE TABLE usuario (id INT AUTO_INCREMENT, nome_acesso VARCHAR(128) NOT NULL UNIQUE, algoritmo VARCHAR(128) DEFAULT 'sha1' NOT NULL, salt VARCHAR(128), senha VARCHAR(128), status INT DEFAULT '1', super_admin TINYINT(1) DEFAULT '0', ultimo_login DATETIME, nome VARCHAR(128) NOT NULL, email VARCHAR(255) NOT NULL, cpf VARCHAR(11) DEFAULT '0', data_nascimento DATETIME DEFAULT '0000-00-00', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX is_active_idx_idx (status), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE usuario_grupo (usuario_id INT, grupo_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(usuario_id, grupo_id)) ENGINE = INNODB;
+CREATE TABLE usuario_permissao (usuario_id INT, permissao_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(usuario_id, permissao_id)) ENGINE = INNODB;
+ALTER TABLE grupo_permissao ADD CONSTRAINT grupo_permissao_permissao_id_permissao_id FOREIGN KEY (permissao_id) REFERENCES permissao(id) ON DELETE CASCADE;
+ALTER TABLE grupo_permissao ADD CONSTRAINT grupo_permissao_grupo_id_grupo_id FOREIGN KEY (grupo_id) REFERENCES grupo(id) ON DELETE CASCADE;
+ALTER TABLE remember_key ADD CONSTRAINT remember_key_usuario_id_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE;
+ALTER TABLE usuario_grupo ADD CONSTRAINT usuario_grupo_usuario_id_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE;
+ALTER TABLE usuario_grupo ADD CONSTRAINT usuario_grupo_grupo_id_grupo_id FOREIGN KEY (grupo_id) REFERENCES grupo(id) ON DELETE CASCADE;
+ALTER TABLE usuario_permissao ADD CONSTRAINT usuario_permissao_usuario_id_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE;
+ALTER TABLE usuario_permissao ADD CONSTRAINT usuario_permissao_permissao_id_permissao_id FOREIGN KEY (permissao_id) REFERENCES permissao(id) ON DELETE CASCADE;

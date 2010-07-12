@@ -1,0 +1,28 @@
+sfGuardUser:
+  sgu_admin:
+    username:       procine_admin
+    password:       j355yj@m35
+    nome:           'Administrador Procine'
+    email:          marcos@marcosregis.com
+    cpf:            19753626835
+    is_super_admin: true
+
+sfGuardPermission:
+  sgp_admin:
+    name:           administrador
+    description:    Permissão de Administrador
+
+sfGuardGroup:
+  sgg_admin:
+    name:           administradores
+    description:    Grupo Administradores
+
+sfGuardGroupPermission:
+  sggp_admin:
+    sfGuardGroup:       sgg_admin
+    sfGuardPermission:  sgp_admin
+
+sfGuardUserGroup:
+  sgug_admin:
+    sfGuardGroup:       sgg_admin
+    sfGuardUser:        sgu_admin

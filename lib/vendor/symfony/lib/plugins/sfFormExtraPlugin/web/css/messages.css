@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+.flash_aviso, #cont .flash_sucesso, #cont .flash_erro {
+    padding: 20pt;
+    padding-left: 70px;
+	background-color: #fafafa;
+	margin-left:56pt;
+	display: table;
+}
+
+
+.flash_erro {
+    color: #FF0000;
+    border: 2pt outset #FF0000;
+    background: #fff url(../images/erro.gif) no-repeat center left;
+}
+
+.flash_sucesso {
+    color: #00EA00;
+    border: 2pt outset #008000;
+    background: #fff url(../images/sucesso.gif) no-repeat center left;
+}
+
+.flash_aviso {
+    color: #CFC774;
+	    border: 2pt outset #CFC774;
+    background: #fff url(../images/alerta.gif) no-repeat center left;
+}

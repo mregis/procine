@@ -1,0 +1,35 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: home, action: index }
+
+admin/sf_guard_user:
+  url: /admin/sf_guard_user
+  param: { module: sfGuardUser, action: index }
+admin_usuario:
+  url: /sf_guard_user
+
+admin/sf_guard_group:
+  url: /admin/sf_guard_group
+  param: { module: sfGuardGroup, action: index }
+admin_grupo:
+  url: /sf_guard_group
+    
+admin/sf_guard_permission:
+  url: /admin/sf_guard_permission
+  param: { module: sfGuardPermission, action: index }
+admin_permissao:
+  url: /sf_guard_permission
+
+  
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /admin/:module
+  param: { action: index }
+
+default:
+  url:   /admin/:module/:action/*

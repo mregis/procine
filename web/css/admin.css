@@ -1,0 +1,181 @@
+body
+{
+  background: logo.jpg;
+}
+
+#container
+{
+  width: 100%;
+  background: none;
+}
+
+#content
+{
+  padding: 25px;
+  padding-top: 0;
+}
+
+#menu
+{
+  padding: 10px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #aaa;
+  background-color: #fff;
+}
+
+#menu li
+{
+  margin-right: 15px;
+  display: inline;
+}
+
+#content h1
+{
+  padding: 0;
+  background: transparent;
+  margin-bottom: 20px;
+  font-size: 140%;
+  color: #000;
+}
+
+td, th
+{
+  padding: 7px;
+  line-height:17pt;
+}
+
+th
+{
+  font-weight: bold;
+}
+
+#footer
+{
+  clear: both;
+  padding: 25px;
+  margin-top: 0;
+  height: auto;
+  font-family: arial,sans-serif;
+  font-size: 80%;
+  float: right;
+  color: #666;
+  background: none;
+}
+
+#footer img
+{
+  vertical-align: middle;
+}
+#sf_admin_container
+{
+	padding:4pt;
+	display:table;
+	width:98.5%;
+}
+
+
+#sf_admin_container fieldset h2
+{
+  font-size: 110%;
+  font-family: arial,sans-serif;
+  font-style: italic;
+}
+
+.sf_admin_form_field_logo div div
+{
+  margin-left: 120px;
+}
+
+#sf_admin_container .sf_admin_form_field_logo div div label
+{
+  display: inline;
+  float: none;
+}
+
+#header h1
+{
+  width: auto;
+}
+
+
+#sf_admin_container fieldset  
+{
+	border:1pt groove #ccc;
+	margin:2pt;
+}
+#sf_admin_container fieldset div  
+{
+
+}
+#sf_admin_container fieldset div div  
+{
+	display:table;
+	padding:2pt;
+	min-width:350pt;	
+	clear:both;
+}
+
+#sf_admin_container fieldset div div div  
+{
+	display:inline;	
+}
+
+#sf_admin_container fieldset div label,
+#sf_admin_container table tbody tr td label   
+{
+	display:table;
+	float:left;
+	font-weight:bold;
+	width: 120pt;
+	text-align:right;
+	padding-right:4pt;
+}
+
+#sf_admin_container fieldset div input, 
+#sf_admin_container fieldset div select,
+#sf_admin_container fieldset div textarea
+  
+{
+
+	font:normal 14pt arial;
+	color: #333;
+	float: left;
+}
+#sf_admin_container h1 
+{
+	font: bold 16pt tahoma;
+	color: #2288AA;
+	text-align: left;
+	border-bottom: 2pt solid #cededc;
+	padding: 2pt;
+}
+label
+{
+}
+#sf_admin_container ul li.sf_admin_action_new a
+{
+	background-image:url(../images/bg-btn-signup.png);
+	background-repeat:repeat-x;
+	-moz-border-radius:4px 4px;
+	-webkit-border-radius:4px 4px; 
+	border-radius: 4px;	
+	behavior:url(../css/border-radius.htc);
+	font-size:12pt;
+	font-weight:bold;
+	padding:3pt;	
+	text-decoration:none;
+	color:#0080c0;
+	display:inline;
+	margin-top:5pt;	
+}
+
+#sf_admin_container ul li.sf_admin_action_new a:hover
+{
+	background-position:0 -8px;
+	color:#800000;;
+}
+#sf_admin_filter td{
+	min-width:50px;
+	width:auto;
+}

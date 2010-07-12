@@ -1,0 +1,20 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html;charset=iso-8859-1
+
+  metas:
+    title:        Gerenciador do Sistema Procine
+    description:  Sistema de controle para empresas do ramo de video
+    keywords:     Sistema de controle para empresas do ramo de video
+    language:     pt_BR
+    robots:       index, follow
+    
+  stylesheets:    [main.css, admin.css]
+
+  javascripts:    [jquery.js]
+
+  has_layout:     true
+  layout:         layout

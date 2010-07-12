@@ -1,0 +1,25 @@
+User:
+  sgu_admin:
+    username:       admin
+    password:       admin
+    is_super_admin: true
+
+Permission:
+  sgp_admin:
+    name:           admin
+    description:    Permissão de Administrador
+
+Group:
+  sgg_admin:
+    name:           admin
+    description:    Grupo Administradores
+
+GroupPermission:
+  sggp_admin:
+    Group:       sgg_admin
+    Permission:  sgp_admin
+
+UserGroup:
+  sgug_admin:
+    Group:       sgg_admin
+    User:        sgu_admin

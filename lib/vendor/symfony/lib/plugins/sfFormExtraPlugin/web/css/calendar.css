@@ -1,0 +1,221 @@
+	 
+#datepick-div, .datepick-inline {
+background:#E0F4D7 none repeat scroll 0 0;
+font-family:Arial,Helvetica,sans-serif;
+font-size:14px;
+margin:0;
+padding:0;
+width:185px;
+}
+#datepick-div {
+border:1px solid #CF1919;
+display:none;
+z-index:100;
+}
+.datepick-inline {
+border:0 none;
+display:block;
+float:left;
+}
+.datepick-rtl {
+direction:rtl;
+}
+.datepick-dialog {
+border:4px ridge #83C948 !important;
+padding:5px !important;
+}
+.datepick-disabled {
+background-color:white;
+opacity:0.5;
+position:absolute;
+z-index:100;
+}
+button.datepick-trigger {
+width:25px;
+}
+img.datepick-trigger {
+margin:2px;
+vertical-align:middle;
+}
+.datepick-prompt {
+background:#E0F4D7 none repeat scroll 0 0;
+color:#000000;
+float:left;
+padding:2px;
+}
+* html .datepick-prompt {
+width:185px;
+}
+.datepick-control, .datepick-links, .datepick-header, .datepick {
+clear:both;
+color:#FFFFFF;
+float:left;
+width:100%;
+}
+.datepick-control {
+background:#CF1919 none repeat scroll 0 0;
+padding:2px 0;
+}
+.datepick-links {
+background:#EFEFEF none repeat scroll 0 0;
+padding:2px 0;
+}
+.datepick-control, .datepick-links {
+font-size:80%;
+font-weight:bold;
+}
+.datepick-links label {
+color:#888888;
+padding:2px 5px;
+}
+.datepick-clear, .datepick-prev {
+float:left;
+width:34%;
+}
+.datepick-rtl .datepick-clear, .datepick-rtl .datepick-prev {
+float:right;
+text-align:right;
+}
+.datepick-current {
+float:left;
+text-align:center;
+width:30%;
+}
+.datepick-close, .datepick-next {
+float:right;
+text-align:right;
+width:34%;
+}
+.datepick-rtl .datepick-close, .datepick-rtl .datepick-next {
+float:left;
+text-align:left;
+}
+.datepick-header {
+background:#CFCFCF none repeat scroll 0 0;
+color:#FFFFFF;
+font-weight:bold;
+height:1.6em;
+text-align:center;
+}
+.datepick-header select {
+background:#CFCFCF none repeat scroll 0 0;
+border:0 none;
+color:#000000;
+font-size:8pt;
+font-weight:bold;
+}
+.datepick-header span {
+position:relative;
+top:3px;
+}
+.datepick {
+background:#CCCCCC none repeat scroll 0 0;
+font-size:100%;
+text-align:center;
+}
+.datepick a {
+display:block;
+width:100%;
+}
+.datepick-title-row {
+background:#EFEFEF none repeat scroll 0 0;
+color:#000000;
+}
+.datepick-title-row th {
+font-size:8pt;
+font-weight:bold;
+text-align:center;
+}
+.datepick-title-row .datepick-week-end-cell {
+background:#BFBFBF none repeat scroll 0 0;
+}
+.datepick-days-row {
+background:#FFFFFF none repeat scroll 0 0;
+color:#666666;
+}
+.datepick-week-col {
+background:#BFBFBF none repeat scroll 0 0;
+color:#000000;
+}
+.datepick-days-cell {
+border:1px solid #DDDDDD;
+color:#000000;
+}
+.datepick-other-month {
+background:#BFBFBF none repeat scroll 0 0;
+}
+.datepick-days-cell a {
+display:block;
+}
+.datepick-week-end-cell {
+background:#BFBFBF none repeat scroll 0 0;
+}
+.datepick-unselectable {
+color:#888888;
+}
+.datepick-week-over, .datepick-week-over .datepick-week-end-cell {
+background:#B1DB87 none repeat scroll 0 0;
+}
+.datepick-today {
+background:#FFDFDF none repeat scroll 0 0;
+}
+.datepick-current-day {
+background:#83C948 none repeat scroll 0 0;
+color:#FFFFFF;
+}
+.datepick-days-cell-over, .datepick-days-cell-over.datepick-week-end-cell {
+background:#FFFFFF none repeat scroll 0 0;
+border:1px solid #777777;
+color:#000000;
+}
+.datepick-status {
+background:#E0F4D7 none repeat scroll 0 0;
+font-size:80%;
+text-align:center;
+width:100%;
+}
+#datepick-div a, .datepick-inline a {
+cursor:pointer;
+font-size:9pt;
+margin:0;
+padding:0;
+text-decoration:none;
+}
+.datepick-inline .datepick-links a {
+padding:0 5px !important;
+}
+.datepick-control a, .datepick-links a {
+color:#000000 !important;
+padding:2px 5px !important;
+}
+.datepick-title-row a {
+color:#000000;
+}
+.datepick-control a:hover {
+background:#FFDDDD none repeat scroll 0 0;
+color:#333333;
+}
+.datepick-links a:hover, .datepick-title-row a:hover {
+background:#FFFFFF none repeat scroll 0 0;
+color:#333333;
+}
+.datepick-multi .datepick {
+border:1px solid #83C948;
+}
+.datepick-one-month {
+float:left;
+width:185px;
+}
+.datepick-new-row {
+clear:left;
+}
+.datepick-cover {
+display:block;
+height:187px;
+left:-1px;
+position:absolute;
+top:-1px;
+width:187px;
+z-index:-1;
+}
+
