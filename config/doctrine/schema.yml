@@ -1,212 +1,411 @@
-sfGuardGroup:
-  tableName: grupo
-  actAs: [Timestampable]
+Empresa:
+  connection: doctrine
+  tableName: empresa
   columns:
-    id:
+    empresa_id:
       type: integer(4)
+      name: empresa_id as id 
+      fixed: false
+      unsigned: true
       primary: true
       autoincrement: true
-    nome:
-      name: nome as name
+    empresa_nm_razaosocial:
       type: string(255)
-      unique: true
-    descricao: 
-      type: string(1000)
-      name: descricao as description
-  relations:
-    users:
-      class: sfGuardUser
-      refClass: sfGuardUserGroup
-      local: group_id
-      foreign: user_id
-      foreignAlias: Groups
-    permissions:
-      class: sfGuardPermission
-      local: group_id
-      foreign: permission_id
-      refClass: sfGuardGroupPermission
-      foreignAlias: Groups
-
-sfGuardPermission:
-  tableName: permissao
-  actAs: [Timestampable]
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    nome:
-      name: nome as name
-      type: string(255)
-      unique: true
-    descricao: 
-      type: string(1000)
-      name: descricao as description
-
-sfGuardGroupPermission:
-  tableName: grupo_permissao
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
-  columns:
-    grupo_id:
-      name: grupo_id as group_id
-      type: integer(4)
-      primary: true
-    permissao_id:
-      name: permissao_id as permission_id
-      type: integer(4)
-      primary: true
-  relations:
-    sfGuardGroup:
-      local: group_id
-      onDelete: CASCADE
-    sfGuardPermission:
-      local: permission_id
-      onDelete: CASCADE
-
-sfGuardUser:
-  tableName: usuario
-  actAs: [Timestampable]
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    nome_acesso:
-      name: nome_acesso as username
-      type: string(128)
+      name: empresa_nm_razaosocial as razao_social
+      fixed: false
+      unsigned: false
+      primary: false
       notnull: true
-      unique: true
-      regexp: '/^[a-zA-Z0-9]+$/'
-      minlength: 6
-    nome:
-      type: string(128)
+      autoincrement: false
+    empresa_nm_nomefantasia:
+      type: string(20)
+      name: empresa_nm_nomefantasia as nome_fantasia
+      fixed: false
+      unsigned: false
+      primary: false
       notnull: true
-    email:
-      type: string(255)
-      notnull: true
-      email: true
-    cpf:
-      type: string(11)
-      notnull: false
+      autoincrement: false
+    empresa_nu_cnpj:
+      type: string(14)
+      name: empresa_nu_cnpj as cnpj
+      fixed: true
+      unsigned: false
+      primary: false
       default: '0'
-    data_nascimento:
-      type: timestamp
-      notnull: false
-      default: '0000-00-00'
-      past: true          
-    algoritmo:
-      name: algoritmo as algorithm 
-      type: string(128)
-      default: sha1
       notnull: true
-    salt: string(128)
-    senha: 
-      type: string(128)
-      name: senha as password
-      minlength: 5
-    status:
-      name: status as is_active
-      type: integer(4)
-      default: '1'
-    super_admin:
-      name: super_admin as is_super_admin
-      type: boolean
-      default: false
-    ultimo_login:
-      name: ultimo_login as last_login
-      type: timestamp
-  indexes:
-    is_active_idx:
-      fields: [is_active]
+      autoincrement: false
   relations:
-    groups:
-      class: sfGuardGroup
-      local: user_id
-      foreign: group_id
-      refClass: sfGuardUserGroup
-      foreignAlias: Users
-    permissions:
-      class: sfGuardPermission
-      local: user_id
-      foreign: permission_id
-      refClass: sfGuardUserPermission
-      foreignAlias: Users
-
-sfGuardUserPermission:
-  tableName: usuario_permissao
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
+    UsuarioEmpresa:
+      local: empresa_id
+      foreign: empresa_id
+      type: many
+Menu:
+  connection: doctrine
+  tableName: menu
   columns:
-    usuario_id:
-      name: usuario_id as user_id
+    menu_id:
       type: integer(4)
-      primary: true
-    permissao_id:
-      name: permissao_id as permission_id
-      type: integer(4)
-      primary: true
-  relations:
-    sfGuardUser:
-      local: user_id
-      onDelete: CASCADE
-    sfGuardPermission:
-      local: permission_id
-      onDelete: CASCADE
-
-sfGuardUserGroup:
-  tableName: usuario_grupo
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
-  columns:
-    usuario_id:
-      name: usuario_id as user_id
-      type: integer(4)
-      primary: true
-    grupo_id:
-      name: grupo_id as group_id
-      type: integer(4)
-      primary: true
-  relations:
-    sfGuardUser:
-      local: user_id
-      onDelete: CASCADE
-    sfGuardGroup:
-      local: group_id
-      onDelete: CASCADE
-
-sfGuardRememberKey:
-  tableName: remember_key
-  options:
-    symfony:
-      form:   false
-      filter: false
-  actAs: [Timestampable]
-  columns:
-    id:
-      type: integer(4)
+      name: menu_id as id
+      fixed: false
+      unsigned: true
       primary: true
       autoincrement: true
-    usuario_id:
-      name: usuario_id as user_id
+    processo_id:
       type: integer(4)
-    remember_key: string(32)
-    ip:
-      name: ip as ip_address
-      type: string(50)
-      primary: true
+      name: processo_id as id_processo
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: false
+      autoincrement: false
+    menu_ds_descricao:
+      type: string(20)
+      name: menu_ds_descricao as descricao
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    menu_nu_ordem:
+      type: integer(1)
+      name: menu_nu_ordem as ordem
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    menu_nu_menupai:
+      type: integer(4)
+      name: menu_nu_menupai as menu_pai
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '0'
+      notnull: false
+      autoincrement: false
+    menu_nu_status:
+      type: integer(1)
+      name: menu_nu_status as status
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
   relations:
-    sfGuardUser:
-      local: user_id
-      foreignAlias: RememberKeys
-      foreignType: one
-      onDelete: CASCADE
+    Menu:
+      local: menu_id
+      foreign: menu_nu_menupai
+      type: many
+    Processo:
+      local: processo_id
+      foreign: processo_id
+      type: one
+Perfil:
+  connection: doctrine
+  tableName: perfil
+  columns:
+    perfil_id:
+      type: integer(4)
+      name: perfil_id as id 
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    perfil_nm_descricao:
+      type: string(50)
+      name: perfil_nm_descricao as descricao
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    perfil_nu_nivel:
+      type: integer(1)
+      name: perfil_nu_nivel as nivel
+      fixed: false
+      unsigned: true
+      primary: false
+      notnull: true
+      autoincrement: false
+    perfil_nu_status:
+      type: integer(1)
+      name: perfil_nu_status as status
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    PerfilProcesso:
+      local: perfil_id
+      foreign: perfil_id
+      type: many
+    UsuarioPerfil:
+      local: perfil_id
+      foreign: perfil_id
+      type: many
+PerfilProcesso:
+  connection: doctrine
+  tableName: perfil_processo
+  columns:
+    processo_id:
+      type: integer(4)
+      name: processo_id as id
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    perfil_id:
+      type: integer(4)
+      name: perfil_id as id_perfil
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+  relations:
+    Perfil:
+      local: perfil_id
+      foreign: perfil_id
+      type: one
+    Processo:
+      local: processo_id
+      foreign: processo_id
+      type: one
+Processo:
+  connection: doctrine
+  tableName: processo
+  columns:
+    processo_id:
+      type: integer(4)
+      name: processo_id as id
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    processo_nm_descricao:
+      type: string(60)
+      name: processo_nm_descricao as descricao
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    processo_nm_rota:
+      type: string(40)
+      name: processo_nm_rota as rota
+      fixed: false
+      unsigned: false
+      primary: false
+      default: ' '
+      notnull: true
+      autoincrement: false
+    processo_nu_status:
+      type: integer(1)
+      name: processo_nu_status as status
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+  relations:
+    Menu:
+      local: processo_id
+      foreign: processo_id
+      type: many
+    PerfilProcesso:
+      local: processo_id
+      foreign: processo_id
+      type: many
+    UsuarioProcesso:
+      local: processo_id
+      foreign: processo_id
+      type: many
+Usuario:
+  connection: doctrine
+  tableName: usuario
+  columns:
+    usuario_id:
+      type: integer(4)
+      name: usuario_id as id 
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    usuario_nm_nomeacesso:
+      type: string(128)
+      name: usuario_nm_nomeacesso as login
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    usuario_nm_nome:
+      type: string(255)
+      name: usuario_nm_nome as nome
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    usuario_nm_email:
+      type: string(255)
+      name: usuario_nm_email as email
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      email: true
+    usuario_nu_cpf:
+      type: string(11)
+      name: usuario_nu_cpf as cpf
+      fixed: true
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    usuario_dt_dtnascimento:
+      type: date(25)
+      name: usuario_dt_dtnascimento as data_nascimento
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    usuario_nm_algoritmo:
+      type: string(128)
+      name: usuario_nm_algoritmo as algoritmo
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    usuario_nm_salt:
+      type: string(128)
+      name: usuario_nm_salt as salt
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    usuario_nm_senha:
+      type: string(128)
+      name: usuario_nm_senha as senha
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    usuario_nu_status:
+      type: integer(1)
+      name: usuario_nu_status as status
+      fixed: false
+      unsigned: true
+      primary: false
+      default: '1'
+      notnull: true
+      autoincrement: false
+    usuario_ts_ultimoacesso:
+      type: timestamp(25)
+      name: usuario_ts_ultimoacesso as ultimo_acesso
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0000-00-00 00:00:00'
+      notnull: true
+      autoincrement: false
+  relations:
+    UsuarioEmpresa:
+      local: usuario_id
+      foreign: usuario_id
+      type: many
+    UsuarioPerfil:
+      local: usuario_id
+      foreign: usuario_id
+      type: many
+    UsuarioProcesso:
+      local: usuario_id
+      foreign: usuario_id
+      type: many
+UsuarioEmpresa:
+  connection: doctrine
+  tableName: usuario_empresa
+  columns:
+    usuario_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      notnull: true
+      autoincrement: false
+    empresa_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      notnull: true
+      autoincrement: false
+  relations:
+    Empresa:
+      local: empresa_id
+      foreign: empresa_id
+      type: one
+    Usuario:
+      local: usuario_id
+      foreign: usuario_id
+      type: one
+UsuarioPerfil:
+  connection: doctrine
+  tableName: usuario_perfil
+  columns:
+    perfil_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    usuario_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+  relations:
+    Usuario:
+      local: usuario_id
+      foreign: usuario_id
+      type: one
+    Perfil:
+      local: perfil_id
+      foreign: perfil_id
+      type: one
+UsuarioProcesso:
+  connection: doctrine
+  tableName: usuario_processo
+  columns:
+    usuario_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+    processo_id:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: false
+  relations:
+    Usuario:
+      local: usuario_id
+      foreign: usuario_id
+      type: one
+    Processo:
+      local: processo_id
+      foreign: processo_id
+      type: one
