@@ -2,6 +2,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn: 'mysql:host=localhost;dbname=mregis_procine'
+      dsn: 'mysql:host=localhost;dbname=procine'
       username: mregis_sfuser
       password: fab10219b09fbb4

@@ -6,7 +6,7 @@ Empresa:
       type: integer(4)
       name: empresa_id as id 
       fixed: false
-      unsigned: true
+      unsigned: true		
       primary: true
       autoincrement: true
     empresa_nm_razaosocial:
@@ -34,11 +34,20 @@ Empresa:
       default: '0'
       notnull: true
       autoincrement: false
+    empresa_nu_status:
+      type: integer(1)
+      name: empresa_nu_status as status
+      notnull: true
+      default: '1'
   relations:
-    UsuarioEmpresa:
-      local: empresa_id
-      foreign: empresa_id
-      type: many
+    Usuarios:
+      class: Usuario
+      refClass: UsuarioEmpresa                                 
+#    UsuarioEmpresa:
+#     local: empresa_id
+#      foreign: empresa_id
+#      type: many
+
 Menu:
   connection: doctrine
   tableName: menu
@@ -52,7 +61,6 @@ Menu:
       autoincrement: true
     processo_id:
       type: integer(4)
-      name: processo_id as id_processo
       fixed: false
       unsigned: true
       primary: false
@@ -72,7 +80,7 @@ Menu:
       fixed: false
       unsigned: true
       primary: false
-      default: '0'
+      default: '1'
       notnull: true
       autoincrement: false
     menu_nu_menupai:
@@ -94,14 +102,15 @@ Menu:
       notnull: true
       autoincrement: false
   relations:
-    Menu:
+    Submenu:
+      class: Menu
       local: menu_id
       foreign: menu_nu_menupai
-      type: many
-    Processo:
+    Processo:      
       local: processo_id
-      foreign: processo_id
+      foreign: id
       type: one
+      
 Perfil:
   connection: doctrine
   tableName: perfil
@@ -139,41 +148,42 @@ Perfil:
       notnull: true
       autoincrement: false
   relations:
-    PerfilProcesso:
-      local: perfil_id
-      foreign: perfil_id
-      type: many
-    UsuarioPerfil:
-      local: perfil_id
-      foreign: perfil_id
-      type: many
+    Usuarios:
+      class: Usuario
+      refClass: UsuarioPerfil
+    Processos:
+      class: Processo
+      refClass: PerfilProcesso
+      foreignAlias: Perfis        
+#    PerfilProcesso:
+#      local: perfil_id
+#      foreign: perfil_id
+#      type: many
+#    UsuarioPerfil:
+#      local: perfil_id
+#      foreign: perfil_id
+#      type: many
+      
 PerfilProcesso:
   connection: doctrine
   tableName: perfil_processo
   columns:
     processo_id:
       type: integer(4)
-      name: processo_id as id
       fixed: false
       unsigned: true
       primary: true
       autoincrement: false
     perfil_id:
       type: integer(4)
-      name: perfil_id as id_perfil
       fixed: false
       unsigned: true
       primary: true
       autoincrement: false
   relations:
     Perfil:
-      local: perfil_id
-      foreign: perfil_id
-      type: one
     Processo:
-      local: processo_id
-      foreign: processo_id
-      type: one
+
 Processo:
   connection: doctrine
   tableName: processo
@@ -213,17 +223,15 @@ Processo:
       autoincrement: false
   relations:
     Menu:
-      local: processo_id
-      foreign: processo_id
-      type: many
-    PerfilProcesso:
-      local: processo_id
-      foreign: processo_id
-      type: many
-    UsuarioProcesso:
-      local: processo_id
-      foreign: processo_id
-      type: many
+    Perfis:
+      refClass: PerfilProcesso
+      class: Perfil
+      foreignAlias: Processos	
+    Usuarios:
+      refClass: UsuarioProcesso
+      class: Usuario
+      foreignAlias: Processos 
+
 Usuario:
   connection: doctrine
   tableName: usuario
@@ -320,18 +328,21 @@ Usuario:
       notnull: true
       autoincrement: false
   relations:
-    UsuarioEmpresa:
-      local: usuario_id
-      foreign: usuario_id
-      type: many
-    UsuarioPerfil:
-      local: usuario_id
-      foreign: usuario_id
-      type: many
-    UsuarioProcesso:
-      local: usuario_id
-      foreign: usuario_id
-      type: many
+    Empresa:
+      foreignType: one
+      class: Empresa
+      refClass: UsuarioEmpresa     
+    Perfis:
+      class: Perfil      
+      refClass: UsuarioPerfil
+      foreignAlias: Usuarios
+      foreignType: one
+    Processos:
+      foreignType: many
+      class: Processo
+      refClass: UsuarioProcesso
+      foreignAlias: Usuarios
+
 UsuarioEmpresa:
   connection: doctrine
   tableName: usuario_empresa
@@ -352,13 +363,8 @@ UsuarioEmpresa:
       autoincrement: false
   relations:
     Empresa:
-      local: empresa_id
-      foreign: empresa_id
-      type: one
     Usuario:
-      local: usuario_id
-      foreign: usuario_id
-      type: one
+        
 UsuarioPerfil:
   connection: doctrine
   tableName: usuario_perfil
@@ -377,13 +383,8 @@ UsuarioPerfil:
       autoincrement: false
   relations:
     Usuario:
-      local: usuario_id
-      foreign: usuario_id
-      type: one
     Perfil:
-      local: perfil_id
-      foreign: perfil_id
-      type: one
+
 UsuarioProcesso:
   connection: doctrine
   tableName: usuario_processo
@@ -402,10 +403,4 @@ UsuarioProcesso:
       autoincrement: false
   relations:
     Usuario:
-      local: usuario_id
-      foreign: usuario_id
-      type: one
     Processo:
-      local: processo_id
-      foreign: processo_id
-      type: one
