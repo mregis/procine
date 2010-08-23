@@ -123,6 +123,8 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
+             'default' => '0000-00-00',
+             'past' => true,
              'length' => '25',
              ));
         $this->hasColumn('usuario_nm_algoritmo as algoritmo', 'string', 128, array(
@@ -132,6 +134,7 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
+             'default' => 'md5',
              'length' => '128',
              ));
         $this->hasColumn('usuario_nm_salt as salt', 'string', 128, array(

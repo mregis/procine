@@ -11,7 +11,7 @@
 <div id="logo">
 <?php echo image_tag('bossanovafilmes_logo.gif')?>
 </div>
-<form action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
+<form action="<?php echo url_for('@signin') ?>" method="post">
 <?php echo $form->renderHiddenFields()?>
 	<div class="form">
 		<div>
@@ -39,7 +39,7 @@
 			<input type="submit" value="<?php echo __('Sign in') ?>" /> <br clear="all" />
 			<br clear="all" />		
 
-  			<label>&nbsp;</label> <a href="<?php echo url_for('@sf_guard_password') ?>"><?php echo __('Forgot password?') ?></a>		
+  			<label>&nbsp;</label> <a href="<?php echo url_for('@password') ?>"><?php echo __('Forgot password?') ?></a>		
 		</div>				
 	</div>
 	

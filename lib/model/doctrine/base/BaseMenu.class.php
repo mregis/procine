@@ -113,7 +113,7 @@ abstract class BaseMenu extends sfDoctrineRecord
 
         $this->hasOne('Processo', array(
              'local' => 'processo_id',
-             'foreign' => 'id'));
+             'foreign' => 'processo_id'));
 
         $this->hasMany('Menu', array(
              'local' => 'menu_nu_menupai',

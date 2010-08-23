@@ -89,8 +89,8 @@ abstract class BaseProcesso extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('Menu', array(
-             'local' => 'menu_id',
-             'foreign' => 'id'));
+             'local' => 'processo_id',
+             'foreign' => 'processo_id'));
 
         $this->hasMany('Perfil as Perfis', array(
              'refClass' => 'PerfilProcesso',

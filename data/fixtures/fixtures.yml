@@ -4,14 +4,20 @@
 # # 
 # # See documentation for your ORM's *:data-load task for more information.
 # 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+
+Perfil:
+  Perfil_1:
+    descricao: 'Administrador'
+    nivel: '1'
+    status: '1'    
+Usuario:
+  Usuario_1:
+    login: 'procine_admin'
+    algoritmo: 'sha1'    
+    senha: 'prcadm082010'
+    nome: 'Administrador Geral do Sistema'
+    email: 'admin@procine.com.br'
+    data_nascimento: '0000-00-00'
+    Perfis: [Perfil_1]    
+    
+    

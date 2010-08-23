@@ -108,7 +108,7 @@ Menu:
       foreign: menu_nu_menupai
     Processo:      
       local: processo_id
-      foreign: id
+      foreign: processo_id
       type: one
       
 Perfil:
@@ -223,6 +223,8 @@ Processo:
       autoincrement: false
   relations:
     Menu:
+      local: processo_id
+      foreign: processo_id    
     Perfis:
       refClass: PerfilProcesso
       class: Perfil
@@ -285,6 +287,8 @@ Usuario:
       primary: false
       notnull: false
       autoincrement: false
+      default: '0000-00-00'
+      past: true
     usuario_nm_algoritmo:
       type: string(128)
       name: usuario_nm_algoritmo as algoritmo
@@ -293,6 +297,7 @@ Usuario:
       primary: false
       notnull: false
       autoincrement: false
+      default: 'md5'
     usuario_nm_salt:
       type: string(128)
       name: usuario_nm_salt as salt

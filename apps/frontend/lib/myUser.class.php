@@ -1,6 +1,6 @@
 <?php
 
-class myUser extends sfGuardSecurityUser
+class myUser extends sfBasicSecurityUser
 
 {
 	const ERROR='erro',
@@ -135,4 +135,9 @@ class myUser extends sfGuardSecurityUser
 		return (count($this->getAttribute('messages'))>0);		
 	}
 	
+	public function setReferer($referer)
+	{
+		$this->referer=$referer;
+		return $this;
+	}
 }

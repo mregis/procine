@@ -2,6 +2,6 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-all:
-  sf_guard_plugin:
-    routes_register: false
+#all:
+#  sf_guard_plugin:
+#    routes_register: false

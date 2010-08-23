@@ -13,4 +13,37 @@
 class Usuario extends BaseUsuario
 {
 
+	/**
+	 * Verify the password match with the pass hash
+	 * @param string $password
+	 * @return bool
+	 */
+	public function checkPassword($password)
+	{
+		if(function_exists($this->algoritmo))
+		{
+			return $this->senha == call_user_func($this->algoritmo,$password);
+		}
+		else
+		{
+			return md5($password)== $this->senha;
+		}
+	}
+
+	/**
+	 * @see Doctrine_Record::save
+	 */
+    public function save(Doctrine_Connection $conn = null)
+    {
+    	if(function_exists($this->algoritmo))
+		{
+			$this->senha = call_user_func($this->algoritmo,$this->senha);
+		}
+		else
+		{
+			$this->senha=md5($this->senha);
+		}
+		return parent::save($conn);
+    }
+    		
 }

@@ -1,17 +1,17 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-sf_guard_signin:
+signin:
   url:   /:sf_culture/login
-  param: { module: sfGuardAuth, action: signin }
+  param: { module: login, action: signin }
 
-sf_guard_signout:
+signout:
   url:   /:sf_culture/logout
-  param: { module: sfGuardAuth, action: signout }
+  param: { module: login, action: signout }
 
-sf_guard_password:
+password:
   url:   /:sf_culture/request_password
-  param: { module: sfGuardAuth, action: password }
+  param: { module: login, action: password }
 
 
 # default rules
