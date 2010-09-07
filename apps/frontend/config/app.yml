@@ -5,3 +5,8 @@
 #all:
 #  sf_guard_plugin:
 #    routes_register: false
+
+# Valor padrão para o tempo de expiração da chave
+remember_key_expiration_age: 86400
+# Nome do cookie que armazenará a chave de lembrança  
+remember_cookie_name: 'procineRememberKey'

@@ -14,10 +14,10 @@
 <?php if($sf_user->isAuthenticated()): ?>
 
 	<div id="dmn">
-		<span class="sair_btn"><a href="<?php echo url_for('@sf_guard_signout') ?>">Sair</a></span>
+		<span class="sair_btn"><a href="<?php echo url_for('@signout') ?>"><?php echo __('Logoff')?></a></span>
 		<div id="user_data">
 			<label>usuário:</label>
-			<?php echo $sf_user->getGuardUser()->getNome()?>
+			<?php echo $sf_user->getUsuario()->getNome()?>
 		</div>		
 		<ul id="mn">
 			<li><a href="#">Produtora</a>

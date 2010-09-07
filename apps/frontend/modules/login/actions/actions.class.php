@@ -68,4 +68,11 @@ class loginActions extends sfActions
 			$this->getResponse()->setStatusCode(401);
 		}
 	}
+	
+	public function executeSignout($request)
+	{
+		$this->getUser()->signOut();
+		$signoutUrl = sfConfig::get('app_success_signout_url', $request->getReferer());
+		$this->redirect('' != $signoutUrl ? $signoutUrl : '@homepage');
+	}	
 }

@@ -6,12 +6,14 @@ class myUser extends sfBasicSecurityUser
 	const ERROR='erro',
 	SUCCESS='sucesso',
 	WARNING='aviso';
-
+  
+	protected $user = null;
+	
 	public function myUser(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
 	{
 		parent::__construct($dispatcher,$storage,$options);
 	}
-	
+
 	/**
 	 * Retorna se o usuário está em simulacao
 	 * @return bool simulacao
@@ -123,21 +125,139 @@ class myUser extends sfBasicSecurityUser
 	{
 		$this->setAttribute('messages',array());
 		return $this;
-	} 
-	
+	}
+
 	/**
 	 * Verifica se há mensagens na fila
-	 * 
-	 * @return bool 
+	 *
+	 * @return bool
 	 */
 	public function hasMessage()
 	{
-		return (count($this->getAttribute('messages'))>0);		
+		return (count($this->getAttribute('messages'))>0);
 	}
-	
+
 	public function setReferer($referer)
 	{
 		$this->referer=$referer;
 		return $this;
+	}
+
+	/**
+	 * Signs in the user on the application.
+	 *
+	 * @param sfGuardUser $user The sfBasicSecurityUser id
+	 * @param boolean $remember Whether or not to remember the user
+	 * @param Doctrine_Connection $con A Doctrine_Connection object
+	 */
+	public function signIn($user, $remember = false, $con = null)
+	{
+		// signin
+		$this->setAttribute('user_id', $user->getId(), 'sfBasicSecurityUser');
+		$this->setAuthenticated(true);
+		$this->clearCredentials();
+		$this->addCredentials($user->getAllPermissionNames());
+
+		// save last login
+		$user->setUltimoAcesso(date('Y-m-d H:i:s'));
+		$user->save($con);
+
+		// remember?
+		if ($remember)
+		{
+			$expiration_age = sfConfig::get('app_remember_key_expiration_age', 15 * 24 * 3600);
+
+			// remove old keys
+			Doctrine::getTable('UsuarioRememberKey')->createQuery()
+			->delete()
+			->where('created_at < ?', date('Y-m-d H:i:s', time() - $expiration_age))
+			->execute();
+
+			// remove other keys from this user
+			Doctrine::getTable('UsuarioRememberKey')->createQuery()
+			->delete()
+			->where('user_id = ?', $user->getId())
+			->execute();
+
+			// generate new keys
+			$key = $this->generateRandomKey();
+
+			// save key
+			$rk = new UsuarioRememberKey();
+			$rk->setRememberKey($key);
+			$rk->setUsuario($user);
+			$rk->setIpAddress($_SERVER['REMOTE_ADDR']);
+			$rk->save($con);
+
+			// make key as a cookie
+			$remember_cookie = sfConfig::get('app_remember_cookie_name', 'sfRemember');
+			sfContext::getInstance()->getResponse()->setCookie($remember_cookie, $key, time() + $expiration_age);
+		}
+	}
+
+	/**
+	 * Returns the array of all permissions names.
+	 *
+	 * @return array
+	 */
+	public function getAllPermissionNames()
+	{
+		return $this->getUsuario() ? $this->getUsuario()->getAllPermissionNames() : array();
+	}
+
+	/**
+	 * Returns a random generated key.
+	 *
+	 * @param int $len The key length
+	 * @return string
+	 */
+	protected function generateRandomKey($len = 20)
+	{
+		$string = '';
+		$pool   = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		for ($i = 1; $i <= $len; $i++)
+		{
+			$string .= substr($pool, rand(0, 61), 1);
+		}
+
+		return md5($string);
+	}
+
+	/**
+	 * Returns the related Usuario.
+	 *
+	 * @return Usuario
+	 */
+	public function getUsuario()
+	{
+		if (!$this->user && $id = $this->getAttribute('user_id', null, 'sfBasicSecurityUser'))
+		{
+			$this->user = Doctrine::getTable('Usuario')->find($id);
+
+			if (!$this->user)
+			{
+				// the user does not exist anymore in the database
+				$this->signOut();
+
+				throw new sfException('The user does not exist anymore in the database.');
+			}
+		}
+
+		return $this->user;
+	}
+
+	/**
+	 * Signs out the user.
+	 *
+	 */
+	public function signOut()
+	{
+		$this->getAttributeHolder()->removeNamespace('sfBasicSecurityUser');
+		$this->user = null;
+		$this->clearCredentials();
+		$this->setAuthenticated(false);
+		$expiration_age = sfConfig::get('app_remember_key_expiration_age', 15 * 24 * 3600);
+		$remember_cookie = sfConfig::get('app_remember_cookie_name', 'sfRemember');
+		sfContext::getInstance()->getResponse()->setCookie($remember_cookie, '', time() - $expiration_age);
 	}
 }

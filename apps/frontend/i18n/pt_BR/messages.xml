@@ -239,6 +239,10 @@
                 <source>"%value%" does not match the time format (%time_format%).</source>                
                 <target>"%value%" não é compatível com o formato de tempo (%time_format%).</target>
             </trans-unit>
+            <trans-unit id="56">
+                <source>Logoff</source>
+                <target>Sair</target>
+            </trans-unit>			
         </body>
     </file>
 </xliff>

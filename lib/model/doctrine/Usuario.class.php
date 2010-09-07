@@ -33,9 +33,9 @@ class Usuario extends BaseUsuario
 	/**
 	 * @see Doctrine_Record::save
 	 */
-    public function save(Doctrine_Connection $conn = null)
-    {
-    	if(function_exists($this->algoritmo))
+	public function save(Doctrine_Connection $conn = null)
+	{
+		if(function_exists($this->algoritmo))
 		{
 			$this->senha = call_user_func($this->algoritmo,$this->senha);
 		}
@@ -44,6 +44,44 @@ class Usuario extends BaseUsuario
 			$this->senha=md5($this->senha);
 		}
 		return parent::save($conn);
-    }
-    		
+	}
+
+	/**
+	 * Returns an array of all permission names.
+	 *
+	 * @return array
+	 */
+	public function getAllPermissionNames()
+	{
+		return array_keys($this->getOnePerfil()->getProcessos());
+	}
+
+	/**
+	 * Returns an array containing all permissions, including groups permissions
+	 * and single permissions.
+	 *
+	 * @return array
+	 */
+	public function getAllPermissions()
+	{
+		if (!$this->_allPermissions)
+		{
+			$this->_allPermissions = array();
+			$permissions = $this->getPermissions();
+			foreach ($permissions as $permission)
+			{
+				$this->_allPermissions[$permission->getName()] = $permission;
+			}
+
+			foreach ($this->getGroups() as $group)
+			{
+				foreach ($group->getPermissions() as $permission)
+				{
+					$this->_allPermissions[$permission->getName()] = $permission;
+				}
+			}
+		}
+
+		return $this->_allPermissions;
+	}
 }

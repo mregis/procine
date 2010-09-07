@@ -24,6 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuario', 'doctrine');
  * @property Doctrine_Collection $UsuarioEmpresa
  * @property Doctrine_Collection $UsuarioPerfil
  * @property Doctrine_Collection $UsuarioProcesso
+ * @property UsuarioRememberKey $RememberKeys
  * 
  * @method integer             getId()              Returns the current record's "id" value
  * @method string              getLogin()           Returns the current record's "login" value
@@ -42,6 +43,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuario', 'doctrine');
  * @method Doctrine_Collection getUsuarioEmpresa()  Returns the current record's "UsuarioEmpresa" collection
  * @method Doctrine_Collection getUsuarioPerfil()   Returns the current record's "UsuarioPerfil" collection
  * @method Doctrine_Collection getUsuarioProcesso() Returns the current record's "UsuarioProcesso" collection
+ * @method UsuarioRememberKey  getRememberKeys()    Returns the current record's "RememberKeys" value
  * @method Usuario             setId()              Sets the current record's "id" value
  * @method Usuario             setLogin()           Sets the current record's "login" value
  * @method Usuario             setNome()            Sets the current record's "nome" value
@@ -59,6 +61,7 @@ Doctrine_Manager::getInstance()->bindComponent('Usuario', 'doctrine');
  * @method Usuario             setUsuarioEmpresa()  Sets the current record's "UsuarioEmpresa" collection
  * @method Usuario             setUsuarioPerfil()   Sets the current record's "UsuarioPerfil" collection
  * @method Usuario             setUsuarioProcesso() Sets the current record's "UsuarioProcesso" collection
+ * @method Usuario             setRememberKeys()    Sets the current record's "RememberKeys" value
  * 
  * @package    Procine
  * @subpackage model
@@ -204,6 +207,10 @@ abstract class BaseUsuario extends sfDoctrineRecord
              'foreign' => 'usuario_id'));
 
         $this->hasMany('UsuarioProcesso', array(
+             'local' => 'id',
+             'foreign' => 'usuario_id'));
+
+        $this->hasOne('UsuarioRememberKey as RememberKeys', array(
              'local' => 'id',
              'foreign' => 'usuario_id'));
     }

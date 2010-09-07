@@ -409,3 +409,33 @@ UsuarioProcesso:
   relations:
     Usuario:
     Processo:
+    
+UsuarioRememberKey:
+  tableName: remember_key
+  options:
+    symfony:
+      form:   false
+      filter: false
+  actAs: [Timestampable]
+  columns:
+    rememberkey_id:
+      name: rememberkey_id as id  
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    usuario_id:
+      type: integer(4)
+      unsigned: true
+    rememberkey_ds_key: 
+      name: rememberkey_ds_key as remember_key  
+      type: string(32)
+    usuario_ip:
+      name: usuario_ip as ip_address
+      type: string(50)
+      primary: true
+  relations:
+    Usuario:
+      local: usuario_id
+      foreignAlias: RememberKeys
+      foreignType: one
+      onDelete: CASCADE    

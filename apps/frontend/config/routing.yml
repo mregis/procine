@@ -19,6 +19,11 @@ homepage:
   url:   /
   param: { module: home, action: index }
 
+# 
+success_signout_url:
+  url:   /:sf_culture/success_signout
+  param: { module: home, action: signout}
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:
