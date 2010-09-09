@@ -75,4 +75,9 @@ class loginActions extends sfActions
 		$signoutUrl = sfConfig::get('app_success_signout_url', $request->getReferer());
 		$this->redirect('' != $signoutUrl ? $signoutUrl : '@homepage');
 	}	
+	
+	public function executePassword(sfWebRequest $request)
+	{
+		
+	}
 }

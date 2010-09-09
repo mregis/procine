@@ -260,4 +260,14 @@ class myUser extends sfBasicSecurityUser
 		$remember_cookie = sfConfig::get('app_remember_cookie_name', 'sfRemember');
 		sfContext::getInstance()->getResponse()->setCookie($remember_cookie, '', time() - $expiration_age);
 	}
+
+	/**
+	 * Returns whether or not the user is anonymous.
+	 *
+	 * @return boolean
+	 */
+	public function isAnonymous()
+	{
+		return !$this->isAuthenticated();
+	}
 }

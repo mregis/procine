@@ -1,11 +1,13 @@
 <?php echo use_stylesheet('loginform.css','last') ?>
 <div id="language_selector">
 <?php 
+/*
 	$culture = $sf_user->getCulture();
 	if($culture=='pt_BR') echo 'PT';
 	else echo link_to('PT','/pt_BR/login');
 	if($culture=='en') echo 'EN';
 	else echo link_to('EN','/en/login');
+*/	
 ?>
 </div>
 <div id="logo">
