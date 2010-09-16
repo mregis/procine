@@ -6,9 +6,9 @@ class myUser extends sfBasicSecurityUser
 	const ERROR='erro',
 	SUCCESS='sucesso',
 	WARNING='aviso';
-  
+
 	protected $user = null;
-	
+
 	public function myUser(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
 	{
 		parent::__construct($dispatcher,$storage,$options);
@@ -67,12 +67,12 @@ class myUser extends sfBasicSecurityUser
 		// Recuperamos o perfil do usuário a ser simulado
 		if($perfil = $usuario->getSinglePerfilForAplicativo()){
 			$usuario->setUltimoAcesso(time()); // para garantir unicidade para o menu
-				
+
 			// Tudo certo, possui perfil, podemos iniciar a simulacao
 			$this->setAttribute('perfil',$perfil);
 			$this->setAttribute('usuario',$usuario);
 			$this->setSimulacao(true);
-				
+
 			$this->populateCredentials();
 		}
 		else
@@ -94,27 +94,27 @@ class myUser extends sfBasicSecurityUser
 		$messages[$type][]=$message;
 		$this->setAttribute('messages',$messages);
 		return $this;
-	}		
+	}
 
 	/**
 	 * Retorna as mensagens enfileiradas
 	 * @param [int $type=0] O Tipo da mensagem a ser retornada [Default 0 - Retorna todas as mensagens]
-	 * @param [bool $keep=false] Indica se a mensagem será mantida na fila após ser recuperada [Default false - remove a mensagem da fila] 
+	 * @param [bool $keep=false] Indica se a mensagem será mantida na fila após ser recuperada [Default false - remove a mensagem da fila]
 	 * @return array
 	 */
 	public function getMessages($type=0,$keep=false)
 	{
 		$messages = $this->getAttribute('messages');
-		
+
 		$return = ($type>0?(isset($messages[$type])?$messages[$type]:array()):$messages);
 		if($keep==false)
 		{
 			if($type>0) unset($messages[$type]);
 			else $messages=array();
-		}						
+		}
 		$this->setAttribute('messages',$messages);
 		return $return;
-		
+
 	}
 
 	/**

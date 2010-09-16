@@ -100,7 +100,7 @@ Menu:
       primary: false
       default: '1'
       notnull: true
-      autoincrement: false
+      autoincrement: false   
   relations:
     Submenu:
       class: Menu
@@ -313,7 +313,7 @@ Usuario:
       unsigned: false
       primary: false
       notnull: true
-      autoincrement: false
+      autoincrement: false      
     usuario_nu_status:
       type: integer(1)
       name: usuario_nu_status as status
